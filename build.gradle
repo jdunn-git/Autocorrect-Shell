@@ -1,0 +1,41 @@
+plugins {
+	id 'java'
+	id 'application'
+	//'eclipse'
+	//'org.json.simple'
+}
+
+group = 'main'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '8'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	//implementation('org.json:json:20171018')
+	//compile("org.json:json:20141113")
+	
+	testImplementation('org.junit.jupiter:junit-jupiter:5.6.0')
+}
+
+test {
+	useJUnitPlatform()
+}
+
+
+sourceSets.main.java.srcDirs = ['src']
+
+apply plugin : "java" 
+ext {
+   javaMainClass = "main.autoshell.autoshell"
+}
+
+application {
+    mainClassName = javaMainClass
+}
+
+run{
+ standardInput = System.in
+}
