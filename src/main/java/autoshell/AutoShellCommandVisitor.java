@@ -1,4 +1,4 @@
-package main.autoshell;
+package autoshell;
 
 import CheckableCommand.CDCheckableCommand;
 import CheckableCommand.DockerCheckableCommand;
@@ -55,7 +55,7 @@ public class AutoShellCommandVisitor implements ShellCommandVisitor {
 				
 				if (vCom.checkIfMatch(name)) {
 					args[1] = vCom.getArgs()[1];
-					String combinedArgs = String.join(" ", args).substring(args[0].length()+1);
+					String combinedArgs = String.join(" ", args);
 					BuildableShellCommand com = gitCommandFactory.BuildCommand(combinedArgs);
 					com.execute();
 					executed = true;

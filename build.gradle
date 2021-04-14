@@ -1,6 +1,7 @@
 plugins {
 	id 'java'
 	id 'application'
+    id 'java-library'
 	//'eclipse'
 	//'org.json.simple'
 }
@@ -25,11 +26,11 @@ test {
 }
 
 
-sourceSets.main.java.srcDirs = ['src']
+sourceSets.main.java.srcDirs = ['src/main/java']
 
 apply plugin : "java" 
 ext {
-   javaMainClass = "main.autoshell.autoshell"
+   javaMainClass = "autoshell.autoshell"
 }
 
 application {
@@ -37,5 +38,5 @@ application {
 }
 
 run{
- standardInput = System.in
+	standardInput = System.in
 }

@@ -18,10 +18,17 @@ public class ShellCommandGit extends BuildableShellCommand {
 	public void BuildCommand(String command) {
 		builder = new ProcessBuilder();
 		
-		name = "git " + command;
+		String[] commandArgs = command.split(" ");
+		
+		name = command;
+		for (String c : commandArgs) {
+			System.out.print(c + " ");
+
+		}
+		System.out.println();
 
 	    //builder.command("sh", "-c", command);
-	    builder.command("git", command);
+	    builder.command(commandArgs);
 		builder.directory(new File(WorkingDirectory.getInstance().getDirectory()));
 	}
 	

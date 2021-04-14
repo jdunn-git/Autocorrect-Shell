@@ -1,4 +1,4 @@
-package main.autoshell;
+package autoshell;
 
 import java.io.BufferedReader;
 import java.io.IOException;

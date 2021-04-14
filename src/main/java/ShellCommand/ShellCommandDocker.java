@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 
 public class ShellCommandDocker extends BuildableShellCommand {
 
-	String name = "cd";
+	String name = "";
 	
 	String[] args;
 
@@ -17,11 +17,14 @@ public class ShellCommandDocker extends BuildableShellCommand {
 	public void BuildCommand(String command) {
 		builder = new ProcessBuilder();
 		
-		name = "docker " + command;
+		command = "/usr/local/bin/docker " + command;
+		name = command;
+
+		String[] commandArgs = command.split(" ");
 
 	    //builder.command("sh", "-c", command);
 		
-	    builder.command("/usr/local/bin/docker", command);
+	    builder.command(commandArgs);
 //	    builder.command("/usr/local/bin/docker", "ps");
 		builder.directory(new File(WorkingDirectory.getInstance().getDirectory()));
 	}

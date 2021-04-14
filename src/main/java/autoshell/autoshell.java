@@ -1,4 +1,4 @@
-package main.autoshell;
+package autoshell;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ import CommandFactories.GitCommandFactory;
 public class autoshell {
 	
 	public static String[] genericCommands = {"ls", "pwd", "ps"};
-	public static String[] gitCommands = {"status", "pull", "commit"};
+	public static String[] gitCommands = {"status", "pull", "commit", "add", "push"};
 	public static String[] dockerCommands = {"ps"};
 	
 	public static void main(String args[]) {
