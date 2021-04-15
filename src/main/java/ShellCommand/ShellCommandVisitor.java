@@ -1,4 +1,4 @@
-package autoshell.ShellCommand;
+package ShellCommand;
 
 import autoshell.CheckableCommand.CDCheckableCommand;
 import autoshell.CheckableCommand.DockerCheckableCommand;

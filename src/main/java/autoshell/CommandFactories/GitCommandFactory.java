@@ -1,7 +1,7 @@
 package autoshell.CommandFactories;
 
-import autoshell.ShellCommand.BuildableShellCommand;
-import autoshell.ShellCommand.ShellCommandGit;
+import ShellCommand.BuildableShellCommand;
+import ShellCommand.ShellCommandGit;
 
 public class GitCommandFactory implements CommandFactory {
 

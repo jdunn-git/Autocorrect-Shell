@@ -1,8 +1,9 @@
 package autoshell.CheckableCommand;
 
+import java.util.Arrays;
 import java.util.List;
 
-import autoshell.ShellCommand.ShellCommandVisitor;
+import ShellCommand.ShellCommandVisitor;
 
 public class CDCheckableCommand extends VisitableCheckableCommand {
 
@@ -10,6 +11,7 @@ public class CDCheckableCommand extends VisitableCheckableCommand {
 	List<String> variants;
 	
 	public CDCheckableCommand() {	
+		variants = Arrays.asList("cd");
 	}
 	
 	@Override

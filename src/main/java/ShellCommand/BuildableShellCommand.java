@@ -1,4 +1,4 @@
-package autoshell.ShellCommand;
+package ShellCommand;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 
 public abstract class BuildableShellCommand {
 
-	ProcessBuilder builder;
+	public ProcessBuilder builder;
 	Process process;
 	BufferedReader reader;
 	//String dir;

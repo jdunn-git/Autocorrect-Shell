@@ -1,14 +1,16 @@
 package autoshell.CheckableCommand;
 
+import java.util.Arrays;
 import java.util.List;
 
-import autoshell.ShellCommand.ShellCommandVisitor;
+import ShellCommand.ShellCommandVisitor;
 
 public class DockerCheckableCommand extends VisitableCheckableCommand {
 	
 	public DockerCheckableCommand(String name) {
 		name = "docker " + name;
 		args = name.split(" ");
+		variants = Arrays.asList(name);
 	}
 	
 	@Override

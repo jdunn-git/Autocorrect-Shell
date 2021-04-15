@@ -1,4 +1,4 @@
-package autoshell.ShellCommand;
+package ShellCommand;
 
 public class WorkingDirectory {
 

@@ -1,13 +1,15 @@
 package autoshell.CheckableCommand;
 
+import java.util.Arrays;
 import java.util.List;
 
-import autoshell.ShellCommand.ShellCommandVisitor;
+import ShellCommand.ShellCommandVisitor;
 
 public class GenericCheckableCommand extends VisitableCheckableCommand {
 
 	public GenericCheckableCommand(String name) {
 		args = name.split(" ");
+		variants = Arrays.asList(name);
 	}
 	
 	@Override

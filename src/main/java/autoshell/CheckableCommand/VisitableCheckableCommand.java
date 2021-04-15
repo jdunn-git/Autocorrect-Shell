@@ -2,7 +2,7 @@ package autoshell.CheckableCommand;
 
 import java.util.List;
 
-import autoshell.ShellCommand.ShellCommandVisitor;
+import ShellCommand.ShellCommandVisitor;
 
 public abstract class VisitableCheckableCommand implements Checkable, Visitable {
 

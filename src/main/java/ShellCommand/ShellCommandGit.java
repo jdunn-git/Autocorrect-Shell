@@ -1,4 +1,4 @@
-package autoshell.ShellCommand;
+package ShellCommand;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -7,7 +7,6 @@ import java.io.InputStreamReader;
 public class ShellCommandGit extends BuildableShellCommand {
 
 	String name;
-	ProcessBuilder builder;
 	Process process;
 	String dir;
 	

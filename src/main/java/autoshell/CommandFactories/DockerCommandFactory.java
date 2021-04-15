@@ -1,7 +1,7 @@
 package autoshell.CommandFactories;
 
-import autoshell.ShellCommand.BuildableShellCommand;
-import autoshell.ShellCommand.ShellCommandDocker;
+import ShellCommand.BuildableShellCommand;
+import ShellCommand.ShellCommandDocker;
 
 public class DockerCommandFactory implements CommandFactory {
 

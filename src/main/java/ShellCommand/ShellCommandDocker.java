@@ -1,29 +1,34 @@
-package autoshell.ShellCommand;
+package ShellCommand;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStreamReader;
 
-public class ShellCommandGeneric extends BuildableShellCommand {
+public class ShellCommandDocker extends BuildableShellCommand {
 
-	String name;
-	ProcessBuilder builder;
-	Process process;
-	String dir;
+	String name = "";
 	
-	public ShellCommandGeneric() {
-	}
+	String[] args;
 
+	public ShellCommandDocker() {
+	}
+	
 	@Override
 	public void BuildCommand(String command) {
 		builder = new ProcessBuilder();
 		
+		command = "/usr/local/bin/docker " + command;
 		name = command;
 
-	    builder.command("sh", "-c", command);
+		String[] commandArgs = command.split(" ");
+
+	    //builder.command("sh", "-c", command);
+		
+	    builder.command(commandArgs);
+//	    builder.command("/usr/local/bin/docker", "ps");
 		builder.directory(new File(WorkingDirectory.getInstance().getDirectory()));
 	}
-	
+
 	@Override
 	public void execute() {
 		try {
@@ -43,11 +48,11 @@ public class ShellCommandGeneric extends BuildableShellCommand {
 		    
 			int exitCode = process.waitFor();
 			assert exitCode == 0;
-
+		    
 		}
 		catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 }

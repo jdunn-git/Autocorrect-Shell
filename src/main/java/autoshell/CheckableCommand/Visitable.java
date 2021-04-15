@@ -1,6 +1,6 @@
 package autoshell.CheckableCommand;
 
-import autoshell.ShellCommand.ShellCommandVisitor;
+import ShellCommand.ShellCommandVisitor;
 
 public interface Visitable {
 

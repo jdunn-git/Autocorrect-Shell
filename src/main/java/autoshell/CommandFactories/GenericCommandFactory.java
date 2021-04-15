@@ -1,7 +1,7 @@
 package autoshell.CommandFactories;
 
-import autoshell.ShellCommand.BuildableShellCommand;
-import autoshell.ShellCommand.ShellCommandGeneric;
+import ShellCommand.BuildableShellCommand;
+import ShellCommand.ShellCommandGeneric;
 
 public class GenericCommandFactory implements CommandFactory {
 
