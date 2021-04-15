@@ -1,4 +1,4 @@
-package CheckStrategies;
+package autoshell.CheckStrategies;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import CheckableCommand.Checkable;
+import autoshell.CheckableCommand.Checkable;
 
 public class FullCheckStrategy implements CheckStrategy {
 

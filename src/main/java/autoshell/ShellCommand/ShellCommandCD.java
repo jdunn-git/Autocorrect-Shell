@@ -1,4 +1,4 @@
-package ShellCommand;
+package autoshell.ShellCommand;
 
 public class ShellCommandCD extends BuildableShellCommand {
 

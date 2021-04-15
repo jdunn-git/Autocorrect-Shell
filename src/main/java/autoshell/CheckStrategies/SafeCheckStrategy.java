@@ -1,11 +1,11 @@
-package CheckStrategies;
+package autoshell.CheckStrategies;
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import CheckableCommand.Checkable;
+import autoshell.CheckableCommand.Checkable;
 
 public class SafeCheckStrategy implements CheckStrategy {
 

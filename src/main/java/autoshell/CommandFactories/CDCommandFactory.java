@@ -1,7 +1,7 @@
-package CommandFactories;
+package autoshell.CommandFactories;
 
-import ShellCommand.BuildableShellCommand;
-import ShellCommand.ShellCommandCD;
+import autoshell.ShellCommand.BuildableShellCommand;
+import autoshell.ShellCommand.ShellCommandCD;
 
 public class CDCommandFactory implements CommandFactory {
 

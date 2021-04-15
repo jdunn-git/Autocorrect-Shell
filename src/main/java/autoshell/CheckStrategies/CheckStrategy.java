@@ -1,6 +1,6 @@
-package CheckStrategies;
+package autoshell.CheckStrategies;
 
-import CheckableCommand.Checkable;
+import autoshell.CheckableCommand.Checkable;
 
 public interface CheckStrategy {
 

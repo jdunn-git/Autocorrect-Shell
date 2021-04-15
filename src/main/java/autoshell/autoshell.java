@@ -4,17 +4,17 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import CheckStrategies.Context;
-import CheckStrategies.FullCheckStrategy;
-import CheckableCommand.CDCheckableCommand;
-import CheckableCommand.DockerCheckableCommand;
-import CheckableCommand.GenericCheckableCommand;
-import CheckableCommand.GitCheckableCommand;
-import CheckableCommand.Visitable;
-import CommandFactories.CDCommandFactory;
-import CommandFactories.DockerCommandFactory;
-import CommandFactories.GenericCommandFactory;
-import CommandFactories.GitCommandFactory;
+import autoshell.CheckStrategies.Context;
+import autoshell.CheckStrategies.FullCheckStrategy;
+import autoshell.CheckableCommand.CDCheckableCommand;
+import autoshell.CheckableCommand.DockerCheckableCommand;
+import autoshell.CheckableCommand.GenericCheckableCommand;
+import autoshell.CheckableCommand.GitCheckableCommand;
+import autoshell.CheckableCommand.Visitable;
+import autoshell.CommandFactories.CDCommandFactory;
+import autoshell.CommandFactories.DockerCommandFactory;
+import autoshell.CommandFactories.GenericCommandFactory;
+import autoshell.CommandFactories.GitCommandFactory;
 
 //import org.json.simple.JSONArray;
 //import org.json.simple.JSONObject;

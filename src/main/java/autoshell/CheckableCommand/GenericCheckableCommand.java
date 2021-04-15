@@ -1,8 +1,8 @@
-package CheckableCommand;
+package autoshell.CheckableCommand;
 
 import java.util.List;
 
-import ShellCommand.ShellCommandVisitor;
+import autoshell.ShellCommand.ShellCommandVisitor;
 
 public class GenericCheckableCommand extends VisitableCheckableCommand {
 

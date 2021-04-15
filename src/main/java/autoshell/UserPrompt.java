@@ -5,11 +5,11 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
 
-import CheckableCommand.Visitable;
-import CommandFactories.CDCommandFactory;
-import CommandFactories.DockerCommandFactory;
-import CommandFactories.GenericCommandFactory;
-import CommandFactories.GitCommandFactory;
+import autoshell.CheckableCommand.Visitable;
+import autoshell.CommandFactories.CDCommandFactory;
+import autoshell.CommandFactories.DockerCommandFactory;
+import autoshell.CommandFactories.GenericCommandFactory;
+import autoshell.CommandFactories.GitCommandFactory;
 
 public class UserPrompt {
 

@@ -1,16 +1,16 @@
 package autoshell;
 
-import CheckableCommand.CDCheckableCommand;
-import CheckableCommand.DockerCheckableCommand;
-import CheckableCommand.GenericCheckableCommand;
-import CheckableCommand.GitCheckableCommand;
-import CommandFactories.CDCommandFactory;
-import CommandFactories.DockerCommandFactory;
-import CommandFactories.GenericCommandFactory;
-import CommandFactories.GitCommandFactory;
-import ShellCommand.BuildableShellCommand;
-import ShellCommand.ShellCommandCD;
-import ShellCommand.ShellCommandVisitor;
+import autoshell.CheckableCommand.CDCheckableCommand;
+import autoshell.CheckableCommand.DockerCheckableCommand;
+import autoshell.CheckableCommand.GenericCheckableCommand;
+import autoshell.CheckableCommand.GitCheckableCommand;
+import autoshell.CommandFactories.CDCommandFactory;
+import autoshell.CommandFactories.DockerCommandFactory;
+import autoshell.CommandFactories.GenericCommandFactory;
+import autoshell.CommandFactories.GitCommandFactory;
+import autoshell.ShellCommand.BuildableShellCommand;
+import autoshell.ShellCommand.ShellCommandCD;
+import autoshell.ShellCommand.ShellCommandVisitor;
 
 public class AutoShellCommandVisitor implements ShellCommandVisitor {
 

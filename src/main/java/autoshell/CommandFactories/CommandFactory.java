@@ -1,6 +1,6 @@
-package CommandFactories;
+package autoshell.CommandFactories;
 
-import ShellCommand.BuildableShellCommand;
+import autoshell.ShellCommand.BuildableShellCommand;
 
 public interface CommandFactory {
 

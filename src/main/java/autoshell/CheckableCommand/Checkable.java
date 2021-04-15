@@ -1,4 +1,4 @@
-package CheckableCommand;
+package autoshell.CheckableCommand;
 
 import java.util.List;
 

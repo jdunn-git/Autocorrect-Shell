@@ -1,14 +1,15 @@
-package CheckableCommand;
+package autoshell.CheckableCommand;
 
 import java.util.List;
 
-import ShellCommand.ShellCommandVisitor;
+import autoshell.ShellCommand.ShellCommandVisitor;
 
-public class GitCheckableCommand extends VisitableCheckableCommand {
+public class CDCheckableCommand extends VisitableCheckableCommand {
+
+	String[] args = {"cd"};
+	List<String> variants;
 	
-	public GitCheckableCommand(String name) {
-		name = "git " + name;
-		args = name.split(" ");
+	public CDCheckableCommand() {	
 	}
 	
 	@Override
@@ -36,5 +37,4 @@ public class GitCheckableCommand extends VisitableCheckableCommand {
 	public boolean checkIfMatch(String str) {
 		return super.checkIfMatch(str);	
 	}
-
 }
