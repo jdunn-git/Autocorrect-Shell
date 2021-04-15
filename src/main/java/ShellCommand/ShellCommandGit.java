@@ -20,15 +20,43 @@ public class ShellCommandGit extends BuildableShellCommand {
 		
 		String[] commandArgs = command.split(" ");
 		
+		int quoteIndex1 = -1, quoteIndex2 = -1;
 		name = command;
-		for (String c : commandArgs) {
-			System.out.print(c + " ");
+		for (int i = 0; i < commandArgs.length; i++) {
+//			System.out.print(commandArgs[i] + " ");
+
+			if (commandArgs[i].startsWith("\"")) {
+				quoteIndex1 = i;
+			}
+			if (commandArgs[i].endsWith("\"")) {
+				quoteIndex2 = i;
+			}
+			
+		}
+		
+		// Truncate the args if there's a string inside of them.
+		String[] truncatedArgs = commandArgs;
+		if (quoteIndex1 != -1 && quoteIndex2 != -1) {
+			truncatedArgs = new String[quoteIndex1+1];
+			for (int i = 0; i < quoteIndex1; i++) {
+				truncatedArgs[i] = commandArgs[i];
+			}
+			String combinedString = "";
+			for (int i = quoteIndex1; i <= quoteIndex2; i++) {
+				combinedString += commandArgs[i] + " ";
+			}
+			truncatedArgs[quoteIndex1] = combinedString;
 
 		}
+		
+		for (int i = 0; i < truncatedArgs.length; i++) {
+			System.out.println(truncatedArgs[i] + " ");
+		}
+
 		System.out.println();
 
 	    //builder.command("sh", "-c", command);
-	    builder.command(commandArgs);
+	    builder.command(truncatedArgs);
 		builder.directory(new File(WorkingDirectory.getInstance().getDirectory()));
 	}
 	

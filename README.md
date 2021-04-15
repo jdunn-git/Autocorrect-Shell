@@ -1,45 +1,33 @@
-# Final Project
+# Final Project - Autoshell
 
 ### Overview of the Assignment
 
-The purpose of this assignment is to design and implement a larger (for the scope of the class) software application in Java that demonstrates knowledge of the concepts from class. Some examples of possible projects include: 
+My final project is a shell program that makes use of an "auto-correct" algorithm to infer which command is being attempted when there is a typo..
+Commands that do not have typos will be executed exactly as typed. I built it in Java since it should be the easiest language to show to the class since I know everyone has at least some Java experience.
 
-  1. An HTTP API deployed to the cloud or runnable as a container
-  2. A command-line tool with a high-quality interface
-  3. An Android mobile application
-  4. A Java lambda service in something like AWS Lambda
-  5. Some other thing that has equivalent functionality / complexity
+## Architecture
+### Design Consideration + Workflow
+To implement this shell, we have a loop querying for user input until either "exit" or "quit" is entered. When a command is received, we will validate whether we can correct it to a known command. If so, then we will construct a new command using the correct factory. At the core level, I am using the Java process builder to construct shell commands, run the commands, and get the output after execution. However, since different types of commands need to be constructed a little bit different in the process builder object, I needed different objects and therefore different factories for these types. Examples include Git commands vs Docker commands vs normal shell commands.
+ 
+Since there are some cases where commands likely shouldn't be executed without being explicitly written (i.e. `$ sudo rm -rf /`), I also added different "modes" for the auto-correct algorithm. Modes include: 'Full' which will always try to correct typos and run any command, 'Safe' which will exclude certain commands corrected and will be more selective with the number of typos per node, and 'None' which will be a normal shell with no auto-correction performed. These were implemented as different strategies for the auto-correction code to take.
 
-Requirements for all projects:
+For now, every command that is being auto-correct to is pre-configured, and the auto-correction algorithms have a mix of pre-configuration and algorithmic generation. For instance, the 'Full' strategy will algorithmically generate every variant of a particular command that has a single typo, including two letters being swapped, one letter missing, one 'near' letter added next to a given character, and one 'near' letter replacing a given character. However, the 'near' letter set was pre-configured based on the qwerty keyboard layout to be any letter directly adjacent a letter on the keyboard.
 
-  1. High-quality written documentation to use, understand, and enhance the project
-  2. Good tests
-  3. Well thought-out architecture
-  
+Executing commands fit very naturally inside of a command model, since we are generating the shell command object and then calling the "execute" function. While most normal shell commands could be generated as a ShellCommandGeneric object, the `$ cd` command was a little different because it is changing the directory that other processes need to run from. For this reason, I used a singleton to keep track of this directory, and update the singleton from the ShellCommandCD class. This way each process can generate on the fly with the current directory, without needing to pass this state around as a variable to each factory and each visitor instance.
 
-There are no restrictions on what type of application you write. However, you must appropriately scope your application to the time available for the assignment and deliver a finished product. Your application must be reasonably _complete_ at the end of the assignment. In addition, your application must have tests to demonstrate that it works. 
+### Patterns Used
+|Pattern|Usage|
+|--|--|
+Factory Pattern|To construct commands based on the command type. 
+Command Pattern|To execute the shell command.
+Strategy Pattern|To apply the correct "auto-correct" algorithm.
+Visitor Pattern|To check each pre-configured command and validate against the "auto-correct" options for that command.
+Singleton Pattern|To track of the current working directory across commands as they are executed.
 
-### Present Your Project
+## Running the Autoshell
 
-In one of the last two live sessions you will give a presentation on your project. Ask the instrutor how long your presentation should be. You should explain: 1) what the application is, 2) the overall architecture, and 3) what were the interesting challenges / solutions / tools involved. Your presentation should include a demo of your application. You should include a couple of visuals (e.g., slides), demonstrating the overall architecture and concepts. Please be selective in what code you show so that the audience can follow your presentation -- you don't need to walk through the application line-by-line.
+Since I am using gradle, you can easily run the autoshell program from the root directory of this repo with this command: 
+```
+$ gradle run --console=plain
+```
 
-### README File ###
-
-You must replace this README file in your repo with your own (make a copy first!). Your README should describe each of the following: 1) what your application is, 2) how it is designed, and 3) instructions and/or sample data to build / run it. Make sure and explain how the concepts map to the seven weeks that you chose.
-
-### Test Development ###
-
-Your application must have tests that demonstrate that the application works as expected. When you scope the application, you should take into account the tests that you need to write. A carefully designed and tested smaller application is better than an untested or poorly thought out complex application. Build something simple and beautiful that is well-tested. 
-
-***Your tests should run automatically on every commit using GitHub actions.***
-
-
-### Concluding Remarks
-
-This assignment is intentionally open-ended. It is essential that you take time up-front to think through what you can reasonably design, build, test, and document in the allotted time. You should scale the complexity of what you do to your programming skills. 
-
-### REMINDERS:
-
-* Start early and ask questions.
-  
-* Build something simple and beautiful: https://www.infoq.com/presentations/Simple-Made-Easy/

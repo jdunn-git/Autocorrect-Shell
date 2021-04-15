@@ -29,7 +29,7 @@ public class autoshell {
 	
 	public static void main(String args[]) {
 		
-		System.out.println("Hello World!");	
+//		System.out.println("Hello World!");	
 		
 		boolean isWindows = System.getProperty("os.name")
 				  .toLowerCase().startsWith("windows");
