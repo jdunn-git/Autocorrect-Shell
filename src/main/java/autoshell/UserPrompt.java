@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
 
+import ShellCommand.BuildableShellCommand;
 import autoshell.CheckableCommand.Visitable;
 import autoshell.CommandFactories.CDCommandFactory;
 import autoshell.CommandFactories.DockerCommandFactory;
@@ -32,30 +33,29 @@ public class UserPrompt {
 	  
 	        // Reading data using readLine
 	        String input = reader.readLine();
-	  
-	        // Printing the read line
-	        //System.out.println("You entered: " + name);
-	        
+	  	        
 	        if (input.equalsIgnoreCase("quit") || input.equalsIgnoreCase("exit")) {
 	        	break;
 	        }
 	        
 	        AutoShellCommandVisitor visitor = new AutoShellCommandVisitor(input, input.split(" "));
+	        // TODO: Improve factory usage. I don't like that I am applying them like this every time.
 	        visitor.genericFactory = genericCommandFactory;
 	        visitor.cdFactory = cdCommandFactory;
 	        visitor.gitCommandFactory = gitCommandFactory;
 	        visitor.dockerCommandFactory = dockerCommandFactory;
 	        
 	        
-	        // TODO: Look for way to make this use the Iterable patterns
+	        // This could potentially become an object that uses the Iterable pattern, if time allows.
 	        for (Visitable com : knownCommands) {
 	        	com.accept(visitor);
 	        }
 	        
-//	        if (!visitor.executed) {
-//				BuildableShellCommand com = genericCommandFactory.BuildCommand(input);
-//				com.execute();
-//	        }
+	        // Fall-through for commands if no match was found
+	        if (!visitor.executed) {
+	        	BuildableShellCommand com = genericCommandFactory.BuildCommand(input);
+				com.execute();
+	        }
 
 		}
 		

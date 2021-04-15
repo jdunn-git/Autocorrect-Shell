@@ -31,4 +31,7 @@ Since I am using gradle, you can easily run the autoshell program from the root 
 $ gradle run --console=plain
 ```
 
-> Note that to run git commands from inside of Java, you may need to run the following command: `$ xcode-select --install`
+Note that to run git commands from inside of Java, you may need to run the following command: 
+```
+$ xcode-select --install
+```

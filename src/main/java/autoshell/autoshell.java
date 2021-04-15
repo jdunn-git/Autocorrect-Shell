@@ -6,6 +6,8 @@ import java.util.List;
 
 import autoshell.CheckStrategies.Context;
 import autoshell.CheckStrategies.FullCheckStrategy;
+import autoshell.CheckStrategies.SafeCheckStrategy;
+import autoshell.CheckStrategies.NoCheckStrategy;
 import autoshell.CheckableCommand.CDCheckableCommand;
 import autoshell.CheckableCommand.DockerCheckableCommand;
 import autoshell.CheckableCommand.GenericCheckableCommand;
@@ -38,15 +40,31 @@ public class autoshell {
 			System.exit(0);
 		}
 		
-		// TODO: Change what strategy is here based off args
-//		Context context = new Context(new SafeCheckStrategy());
-		Context context = new Context(new FullCheckStrategy());
+		Context context;
+		String strat = "Full";
 		
-		/*ShellCommand com = factory.BuildCommand("cd dev", null);
-		com.RunCommand();
-		com.PrintOutput();*/
 
-		String dir = System.getProperty("user.dir");
+		// Change what strategy is here based off args
+		if (args.length > 0) {
+			strat = args[0];
+		}
+		
+		if (strat.equalsIgnoreCase("Full")) {
+			context = new Context(new FullCheckStrategy());
+			System.out.println("Using 'Full' Strategy");
+		}
+		else if (strat.equalsIgnoreCase("Safe")) {
+			context = new Context(new SafeCheckStrategy());
+			System.out.println("Using 'Safe' Strategy");
+		}
+		else if (strat.equalsIgnoreCase("None")) {
+			context = new Context(new NoCheckStrategy());
+			System.out.println("Using 'No' Strategy");
+		}
+		else {
+			context = new Context(new FullCheckStrategy());
+			System.out.println("Using Default Strategy, which si 'Full'");
+		}
 		
 		UserPrompt.genericCommandFactory = new GenericCommandFactory();
 		UserPrompt.cdCommandFactory = new CDCommandFactory();
@@ -81,22 +99,9 @@ public class autoshell {
 		try {
 			results = UserPrompt.runShell();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		System.exit(results);
 		
-//		try {
-	    /*
-	    Scanner scan = new Scanner(System.in);
-	    System.out.print("Type a command: ");
-	    
-	    
-	    
-	    String userCommand = scan.nextLine();
-	    System.out.println("Your command: " + userCommand);
-
-	    scan.close();
-	    */
 	}
 }
