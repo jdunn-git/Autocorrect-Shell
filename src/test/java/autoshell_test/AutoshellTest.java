@@ -9,9 +9,8 @@ import org.junit.jupiter.api.Test;
 
 import ShellCommand.BuildableShellCommand;
 import ShellCommand.ShellCommandGeneric;
-import autoshell.UserPrompt;
+import autoshell.CheckStrategies.*;
 import autoshell.CheckableCommand.*;
-//import autoshell.CheckStrategies.*;
 import autoshell.CommandFactories.*;
 //import autoshell.ShellCommand.*;
 
@@ -87,6 +86,92 @@ public class AutoshellTest {
 		List<String> dockerProcessBuilderCommands = dockercCom.builder.command();
 		assertEquals(Arrays.asList("/usr/local/bin/docker", "Test", "4"), dockerProcessBuilderCommands);
 		
+	}
+	
+	@Test
+	public void testStrategies() {
+		
+		/*GenericCheckableCommand testCommand = new GenericCheckableCommand("test command");
+		String com = "test comand";
+
+        assertFalse(testCommand.checkIfMatch(com));
+		
+		String variants = "test comand";
+		testCommand.setVariants(Arrays.asList(variants));
+		
+        assertTrue(testCommand.checkIfMatch(com));*/
+        
+		String com = "pdw";
+		Context context;
+		GenericCheckableCommand testCommand;
+		GenericCheckableCommand genericTestCommand;
+		GitCheckableCommand gitTestCommand;
+		DockerCheckableCommand dockerTestCommand;
+		
+		// Test FullCheckStrategy
+		context = new Context(new FullCheckStrategy());
+		
+		com = "pdw";
+		genericTestCommand = new GenericCheckableCommand("pwd");
+        assertFalse(genericTestCommand.checkIfMatch(com));
+		context.executeStrategy(genericTestCommand);
+        assertTrue(genericTestCommand.checkIfMatch(com));
+
+		com = "git satatus";
+        gitTestCommand = new GitCheckableCommand("status");
+        assertFalse(gitTestCommand.checkIfMatch(com));
+		context.executeStrategy(gitTestCommand);
+        assertTrue(gitTestCommand.checkIfMatch(com));
+
+		com = "dokcer ps";
+        dockerTestCommand = new DockerCheckableCommand("ps");
+        assertFalse(dockerTestCommand.checkIfMatch(com));
+		context.executeStrategy(dockerTestCommand);
+        assertTrue(dockerTestCommand.checkIfMatch(com));
+
+
+		// Test SafeCheckStrategy
+		context = new Context(new SafeCheckStrategy());
+
+		com = "pdw";
+		genericTestCommand = new GenericCheckableCommand("pwd");
+        assertFalse(genericTestCommand.checkIfMatch(com));
+		context.executeStrategy(genericTestCommand);
+        assertTrue(genericTestCommand.checkIfMatch(com));
+
+		com = "git satatus";
+        gitTestCommand = new GitCheckableCommand("status");
+        assertFalse(gitTestCommand.checkIfMatch(com));
+		context.executeStrategy(gitTestCommand);
+        assertTrue(gitTestCommand.checkIfMatch(com));
+
+		com = "dokcer ps";
+        dockerTestCommand = new DockerCheckableCommand("ps");
+        assertFalse(dockerTestCommand.checkIfMatch(com));
+		context.executeStrategy(dockerTestCommand);
+        assertTrue(dockerTestCommand.checkIfMatch(com));
+
+		// Test NoCheckStrategy
+		context = new Context(new NoCheckStrategy());
+
+		com = "pdw";
+		genericTestCommand = new GenericCheckableCommand("pwd");
+        assertFalse(genericTestCommand.checkIfMatch(com));
+		context.executeStrategy(genericTestCommand);
+		assertFalse(genericTestCommand.checkIfMatch(com));
+
+		com = "git satatus";
+        gitTestCommand = new GitCheckableCommand("status");
+        assertFalse(gitTestCommand.checkIfMatch(com));
+		context.executeStrategy(gitTestCommand);
+		assertFalse(gitTestCommand.checkIfMatch(com));
+
+		com = "dokcer ps";
+        dockerTestCommand = new DockerCheckableCommand("ps");
+        assertFalse(dockerTestCommand.checkIfMatch(com));
+		context.executeStrategy(dockerTestCommand);
+        assertFalse(dockerTestCommand.checkIfMatch(com));
+
 	}
 
 }

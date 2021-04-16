@@ -83,7 +83,7 @@ public class FullCheckStrategy implements CheckStrategy {
 		List<String> tempList = new ArrayList<String>();
 		
 		for (int i = 0; i < name.length(); i++) {
-			for (String c : qwertyMisclicks.get(String.valueOf(name.charAt(i)))) {
+			for (String c : qwertyMisclicks.get(String.valueOf(name.charAt(i)).toLowerCase())) {
 				String newVariant = "";
 				if (i > 0 && i < name.length() - 1) {
 					newVariant = name.substring(0,i) + c + name.substring(i+1);
@@ -134,7 +134,7 @@ public class FullCheckStrategy implements CheckStrategy {
 		List<String> tempList = new ArrayList<String>();
 		
 		for (int i = 0; i < name.length(); i++) {
-			for (String c : qwertyMisclicks.get(String.valueOf(name.charAt(i)))){
+			for (String c : qwertyMisclicks.get(String.valueOf(name.charAt(i)).toLowerCase())){
 				String newVariant1 = "", newVariant2 = "";
 				if (i > 0 && i < name.length() - 1) {
 					newVariant1 = name.substring(0,i) + c + name.substring(i);

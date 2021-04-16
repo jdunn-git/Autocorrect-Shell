@@ -18,7 +18,8 @@ public class SafeCheckStrategy implements CheckStrategy {
 	Map<String,List<String>> hardcodedVariantsMap = new HashMap<String,List<String>>(){{
 		put("ls",Arrays.asList("ls", "sl"));
 		put("pwd",Arrays.asList("pwd", "pdw"));
-		put("git status",Arrays.asList("git status", "git stauts", "git sttaus", "gti status"));
+		put("git status",Arrays.asList("git status", "git stauts", "git sttaus", "gti status", "git satatus"));
+		put("docker ps",Arrays.asList("dokcer ps", "docer ps", "doker ps", "dcoker ps", "docekr ps"));
 	}};
 	
 	@Override
