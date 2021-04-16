@@ -30,9 +30,7 @@ public class autoshell {
 	public static String[] dockerCommands = {"ps", "image", "run", "logs"};
 	
 	public static void main(String args[]) {
-		
-//		System.out.println("Hello World!");	
-		
+				
 		boolean isWindows = System.getProperty("os.name")
 				  .toLowerCase().startsWith("windows");
 		if (isWindows) {
