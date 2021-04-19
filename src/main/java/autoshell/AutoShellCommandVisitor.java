@@ -76,6 +76,7 @@ public class AutoShellCommandVisitor implements ShellCommandVisitor {
 
 				if (vCom.checkIfMatch(name)) {
 					args[1] = vCom.getArgs()[1];
+					args[0] = "docker";
 					String combinedArgs = String.join(" ", args).substring(args[0].length()+1);
 					BuildableShellCommand com = dockerCommandFactory.BuildCommand(combinedArgs);
 					printMatchedCommand(args);
