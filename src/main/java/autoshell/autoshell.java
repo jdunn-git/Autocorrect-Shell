@@ -27,7 +27,7 @@ public class autoshell {
 	
 	public static String[] genericCommands = {"ls", "pwd", "ps"};
 	public static String[] gitCommands = {"status", "pull", "commit", "add", "push"};
-	public static String[] dockerCommands = {"ps", "image", "run", "logs"};
+	public static String[] dockerCommands = {"ps", "images", "run", "logs"};
 	
 	public static void main(String args[]) {
 				
