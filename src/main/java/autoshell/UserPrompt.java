@@ -33,7 +33,6 @@ public class UserPrompt {
 	  
 	        // Reading data using readLine
 	        String input = reader.readLine();
-	        input = input.toLowerCase();
 	  	        
 	        if (input.equalsIgnoreCase("quit") || input.equalsIgnoreCase("exit")) {
 	        	break;

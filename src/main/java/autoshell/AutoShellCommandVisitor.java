@@ -39,6 +39,7 @@ public class AutoShellCommandVisitor implements ShellCommandVisitor {
 				args[0] = vCom.getName();
 				String combinedArgs = String.join(" ", args);
 				BuildableShellCommand com = genericFactory.BuildCommand(combinedArgs);
+				printMatchedCommand(args);
 				com.execute();
 				executed = true;
 			}
@@ -57,6 +58,7 @@ public class AutoShellCommandVisitor implements ShellCommandVisitor {
 					args[1] = vCom.getArgs()[1];
 					String combinedArgs = String.join(" ", args);
 					BuildableShellCommand com = gitCommandFactory.BuildCommand(combinedArgs);
+					printMatchedCommand(args);
 					com.execute();
 					executed = true;
 				}
@@ -76,6 +78,7 @@ public class AutoShellCommandVisitor implements ShellCommandVisitor {
 					args[1] = vCom.getArgs()[1];
 					String combinedArgs = String.join(" ", args).substring(args[0].length()+1);
 					BuildableShellCommand com = dockerCommandFactory.BuildCommand(combinedArgs);
+					printMatchedCommand(args);
 					com.execute();
 					executed = true;
 				}
@@ -93,6 +96,7 @@ public class AutoShellCommandVisitor implements ShellCommandVisitor {
 				String combinedArgs = String.join(" ", args);
 				ShellCommandCD com = (ShellCommandCD)cdFactory.BuildCommand(combinedArgs);
 				com.SetArgs(args);
+				printMatchedCommand(args);
 				com.execute();
 				executed = true;
 			}
@@ -104,5 +108,15 @@ public class AutoShellCommandVisitor implements ShellCommandVisitor {
 		if (debug) {
 			System.out.println("Visiting command '" + name + "'");
 		}
+	}
+	
+	public void printMatchedCommand(String[] args) {
+		String matchedCommand = "'";
+		for (String arg : args) {
+			matchedCommand += arg + " ";
+		}
+		matchedCommand = matchedCommand.stripTrailing();
+		matchedCommand += "'";
+		System.out.println(matchedCommand);
 	}
 }

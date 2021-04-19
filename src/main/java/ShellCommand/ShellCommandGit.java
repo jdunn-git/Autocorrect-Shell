@@ -48,11 +48,11 @@ public class ShellCommandGit extends BuildableShellCommand {
 
 		}
 		
-		for (int i = 0; i < truncatedArgs.length; i++) {
+		/*for (int i = 0; i < truncatedArgs.length; i++) {
 			System.out.println(truncatedArgs[i] + " ");
 		}
 
-		System.out.println();
+		System.out.println();*/
 
 	    //builder.command("sh", "-c", command);
 	    builder.command(truncatedArgs);
