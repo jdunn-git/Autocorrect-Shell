@@ -1,5 +1,7 @@
 # Final Project - Autoshell
 
+This is a demo
+
 ### Overview of the Assignment
 
 My final project is a shell program that makes use of an "auto-correct" algorithm to infer which command is being attempted when there is a typo..
@@ -28,7 +30,7 @@ Singleton Pattern|To track of the current working directory across commands as t
 
 Since I am using gradle, you can easily run the autoshell program from the root directory of this repo with this command: 
 ```
-$ gradle run --console=plain
+$ gradle run --console=plain --args="Full"
 ```
 
 Note that to run git commands from inside of Java, you may need to run the following command: 
