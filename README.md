@@ -1,6 +1,6 @@
-# Final Project - Autoshell
+# Autocorrect Shell / Autoshell
 
-This is a demo
+This repo was created as a Final Project in my masters course for software design principles. It is a demo of a shell prompt that can utilize different autocorrect strategies. This project was built to demostrate the use of a many different software design pattern, which can be found below. 
 
 ### Overview of the Assignment
 
